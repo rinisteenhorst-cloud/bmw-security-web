@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101820">
+  <title>BMW Security</title>
+  <style>
+    body {
+      margin: 0;
+      background: #101820;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    header { padding: 25px; background: #182533; }
+    h1 { margin: 0; }
+    .car { font-size: 90px; margin: 35px 0; }
+    .status { font-size: 22px; margin: 20px; }
+    .doors {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding: 20px;
+    }
+    button {
+      padding: 18px 8px;
+      border: 0;
+      border-radius: 12px;
+      background: #1e3448;
+      color: white;
+      font-size: 15px;
+    }
+    button.open { background: #a52b35; }
+    .trunk { margin: 0 20px; width: calc(100% - 40px); }
+    footer { color: #9aaaba; padding: 30px 15px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>BMW Security</h1>
+    <p>BMW X3 xDrive30e (G01)</p>
+  </header>
+
+  <div class="car">🚙</div>
+  <div class="status" id="status">Alle portieren gesloten</div>
+
+  <div class="doors">
+    <button onclick="toggle(this)">Bestuurdersportier</button>
+    <button onclick="toggle(this)">Passagiersportier</button>
+    <button onclick="toggle(this)">Achterportier links</button>
+    <button onclick="toggle(this)">Achterportier rechts</button>
+  </div>
+
+  <button class="trunk" onclick="toggle(this)">Achterklep</button>
+
+  <footer>Demonstratie · Nog niet gekoppeld aan BMW CarData</footer>
+
+  <script>
+    function toggle(button) {
+      button.classList.toggle("open");
+      const count = document.querySelectorAll("button.open").length;
+      document.getElementById("status").textContent =
+        count ? count + " onderdeel(en) open" : "Alle portieren gesloten";
+    }
+  </script>
+</body>
+</html>
